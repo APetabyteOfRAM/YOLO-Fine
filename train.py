@@ -54,13 +54,8 @@ def _main():
             loss={
             # use custom yolo_loss Lambda layer.
             'yolo_loss': lambda y_true, y_pred: y_pred}
-            # metrics=[tf.metrics.MeanSquaredError()]
-            # metrics=['MeanSquaredError']
             )
         
-        # print(model.summary())
-        # model.build((512,512,3))
-        # print(model.summary())  
         
         batch_size = 1
         print('Train on {} samples, val on {} samples, with batch size {}.'.format(num_train, num_val, batch_size))
@@ -170,14 +165,7 @@ def data_generator_wrapper(annotation_lines, batch_size, input_shape, anchors, n
     if n==0 or batch_size<=0: return None
     return data_generator(annotation_lines, batch_size, input_shape, anchors, num_classes)
 
-# def fix_gpu():
-#     config =  tf.compat.v1.ConfigProto()
-#     config.gpu_options.allow_growth = True
-#     session =  tf.compat.v1.InteractiveSession(config=config)
-
-
-
 
 if __name__ == '__main__':
-    # fix_gpu()
+
     _main()
